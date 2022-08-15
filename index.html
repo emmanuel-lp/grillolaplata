@@ -7,21 +7,22 @@
 
 
 
-<div id="fileUpload" id="dvCSV">
+<div id="dvCSV">
 <h2>The XMLHttpRequest Object</h2>
 <body onload="loadDoc()">
 </div>
 
 <script>
 function loadDoc() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
-
-
+  var xhttp = new XMLHttpRequest();
+  xhttp.onload = function(e) {
+         
     var table = document.createElement("table");
-                    var rows = e.target.result.split("\n");
-                    for (var i = 0; i < rows.length; i++) {
-                        var cells = rows[i].split(",");
+    var rows = e.target.result.split("\n");
+                   
+   
+        for (var i = 0; i < rows.length; i++) {
+          var cells = rows[i].split(",");
                         if (cells.length > 1) {
                             var row = table.insertRow(-1); 
                             for (var j = 0; j < cells.length; j++) {
@@ -39,13 +40,10 @@ function loadDoc() {
                     }
 
     
-                        var dvCSV = document.getElementById("dvCSV");
-                    dvCSV.innerHTML = "";
-                    dvCSV.appendChild(table);
+                 var dvCSV = document.getElementById("dvCSV");
+                 dvCSV.innerHTML = "";
+                 dvCSV.appendChild(table);
     
-    
-    document.getElementById("fileUpload").innerHTML =
-    this.responseText;
   }
   xhttp.open("GET", "precio.csv",true);
   xhttp.send();
