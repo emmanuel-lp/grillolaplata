@@ -7,7 +7,7 @@
 
 
 
-<div id="fileUpload">
+<div id="fileUpload" id="dvCSV">
 <h2>The XMLHttpRequest Object</h2>
 <body onload="loadDoc()">
 </div>
@@ -38,6 +38,12 @@ function loadDoc() {
                         }
                     }
 
+    
+                        var dvCSV = document.getElementById("dvCSV");
+                    dvCSV.innerHTML = "";
+                    dvCSV.appendChild(table);
+    
+    
     document.getElementById("fileUpload").innerHTML =
     this.responseText;
   }
