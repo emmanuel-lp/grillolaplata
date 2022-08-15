@@ -16,27 +16,9 @@
 function loadDoc() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    document.getElementById("fileUpload").innerHTML =
-    this.responseText;
-  }
-  xhttp.open("GET", "precio.csv",true);
-  xhttp.send();
-}
-</script>
 
 
-
-
-  
-     <script>
- function Upload() {
-        var fileUpload = document.getElementById("fileUpload");
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
-        if (regex.test(fileUpload.value.toLowerCase())) {
-            if (typeof (FileReader) != "undefined") {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    var table = document.createElement("table");
+    var table = document.createElement("table");
                     var rows = e.target.result.split("\n");
                     for (var i = 0; i < rows.length; i++) {
                         var cells = rows[i].split(",");
@@ -51,40 +33,21 @@ function loadDoc() {
                                     //var imagen = cell;  
                                    // document.getElementById("p1").innerHTML = cells;
                                   var row = table.insertRow(-1);
-                                          }
-                             
+                                          }                             
                             }
                         }
                     }
-                    var dvCSV = document.getElementById("dvCSV");
-                    dvCSV.innerHTML = "";
-                    dvCSV.appendChild(table);
-                  
-                }
-                reader.readAsText(fileUpload.files[0]);
-            } else {
-                alert("This browser does not support HTML5.");
-            }
-        } else {
-            alert("Please upload a valid CSV file.");
-        }
-    }
+
+    document.getElementById("fileUpload").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "precio.csv",true);
+  xhttp.send();
+}
+</script>
 
 
-    </script>
- 
 
-
-<body onload="Upload()">
-
-<p id="p1">Hello World!</p>
-
-<hr />
-<div id="dvCSV" id="cell">
-   
-</div>
-
-<p id="p1">Hello World!</p>
 
     </body>
     </head> 
